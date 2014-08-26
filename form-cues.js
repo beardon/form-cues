@@ -2,13 +2,28 @@
 
 (function () {
 
-// Create a safe reference to the FormCues object for use below.
-    var fc = function (obj) {
-        if (obj instanceof fc) return obj;
-        if (!(this instanceof fc)) return new fc(obj);
+    // Establish the root object, `window` in the browser, or `exports` on the server.
+    var root = this;
+
+    // Create a safe reference to the FormCues object for use below.
+    var cues = function (obj) {
+        if (obj instanceof cues) return obj;
+        if (!(this instanceof cues)) return new cues(obj);
     };
 
-    fc.addAlert = function (alertId, message, options) {
+    // Export the FormCues object for **Node.js**, with
+    // backwards-compatibility for the old `require()` API. If we're in
+    // the browser, add `cues` as a global object.
+    if (typeof exports !== 'undefined') {
+        if (typeof module !== 'undefined' && module.exports) {
+            exports = module.exports = cues;
+        }
+        exports.cues = cues;
+    } else {
+        root.cues = cues;
+    }
+
+    cues.addAlert = function (alertId, message, options) {
         options = options || {};
         var level = options.level || 'info';
         var isDismissable = options.isDismissable || options.dismissable || false;
@@ -20,7 +35,7 @@
         alert.alert();
     };
 
-    fc.setSubmitState = function (buttonId, iconId, options) {
+    cues.setSubmitState = function (buttonId, iconId, options) {
         options = options || {};
         var isEnabled = options.isEnabled || options.enabled || false;
         var doSpin = options.doSpin || options.spin || false;
