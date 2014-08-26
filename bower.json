@@ -1,0 +1,19 @@
+{
+    "name": "form-cues",
+    "version": "0.0.1",
+    "main": "./form-cues.js",
+    "dependencies": {
+        "bootstrap": "latest",
+        "font-awesome": "latest",
+        "jquery": ">=1.7"
+    },
+    "ignore": [
+        "Gruntfile.js",
+        "package.json"
+    ],
+    "keywords": [
+        "form",
+        "visual",
+        "bootstrap"
+    ]
+}

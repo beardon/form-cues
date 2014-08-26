@@ -1,0 +1,25 @@
+{
+  "name": "form-cues",
+  "description": "Visual cues for form using Bootstrap and Font Awesome",
+  "version": "0.0.1",
+  "homepage": "https://github.com/beardon/form-cues",
+  "bugs": {
+    "url": "https://github.com/beardon/form-cues/issues",
+    "email": "aaron.bean@beardon.com"
+  },
+  "author": {
+    "name": "Aaron Bean",
+    "email": "aaron.bean@beardon.com",
+    "url": "https://github.com/aaronbean"
+  },
+  "main": "./form-cues.js",
+  "keywords": [
+    "form",
+    "visual",
+    "bootstrap"
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.5.1"
+  }
+}
