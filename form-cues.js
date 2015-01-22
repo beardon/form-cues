@@ -23,35 +23,47 @@
         root.cues = cues;
     }
 
-    cues.addAlert = function (alertId, message, options) {
+    /**
+     * Adds a Bootstrap alert to a page, assumes a div element with an id of [alert]
+     * @param alertElement {Object|String}
+     * @param message
+     * @param options
+     */
+    cues.addAlert = function (alertElement, message, options) {
         options = options || {};
         var level = options.level || 'info';
         var isDismissable = options.isDismissable || options.dismissable || false;
         var doMultiple = options.doMultiple || options.multiple || false;
-        var alertElement = $('#' + alertId);
+        alertElement = ((alertElement instanceof Object) ? alertElement : $('#' + alertElement));
         var dismissHtml = (isDismissable ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' : '');
         var alertHtml = '<div class="alert alert-' + level + '">' + dismissHtml + message + '</div>';
         var alert = (doMultiple ? alertElement.append(alertHtml) : alertElement.html(alertHtml));
         alert.alert();
     };
 
-    cues.setSubmitState = function (buttonId, iconId, options) {
+    /**
+     * Disables/enables buttons and animates their icons
+     * @param submitButton {Object|String}
+     * @param submitIcon {Object|String}
+     * @param options
+     */
+    cues.setSubmitState = function (submitButton, submitIcon, options) {
         options = options || {};
         var isEnabled = options.isEnabled || options.enabled || false;
         var doSpin = options.doSpin || options.spin || false;
         var defaultIcon = options.defaultIcon || options.icon || 'check';
         var spinnerIcon = options.spinnerIcon || 'spinner';
-        var sendButton = $('#' + buttonId);
-        var sendIcon = $('#' + iconId);
-        sendButton.prop('disabled', !isEnabled);
+        submitButton = ((submitButton instanceof Object) ? submitButton : $('#' + submitButton));
+        submitIcon = ((submitIcon instanceof Object) ? submitIcon : $('#' + submitIcon));
+        submitButton.prop('disabled', !isEnabled);
         if (!!doSpin) {
-            sendIcon.removeClass('fa-' + defaultIcon);
-            sendIcon.addClass('fa-' + spinnerIcon);
-            sendIcon.addClass('fa-spin');
+            submitIcon.removeClass('fa-' + defaultIcon);
+            submitIcon.addClass('fa-' + spinnerIcon);
+            submitIcon.addClass('fa-spin');
         } else {
-            sendIcon.removeClass('fa-' + spinnerIcon);
-            sendIcon.removeClass('fa-spin');
-            sendIcon.addClass('fa-' + defaultIcon);
+            submitIcon.removeClass('fa-' + spinnerIcon);
+            submitIcon.removeClass('fa-spin');
+            submitIcon.addClass('fa-' + defaultIcon);
         }
     };
 

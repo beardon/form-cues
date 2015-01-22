@@ -1,6 +1,6 @@
 {
     "name": "form-cues",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "main": "./form-cues.js",
     "dependencies": {
         "bootstrap": "latest",
