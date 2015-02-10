@@ -53,16 +53,17 @@
         var doSpin = options.doSpin || options.spin || false;
         var defaultIcon = options.defaultIcon || options.icon || 'check';
         var spinnerIcon = options.spinnerIcon || 'spinner';
+        var animation = options.animation || 'spin';
         submitButton = ((submitButton instanceof Object) ? submitButton : $('#' + submitButton));
         submitIcon = ((submitIcon instanceof Object) ? submitIcon : $('#' + submitIcon));
         submitButton.prop('disabled', !isEnabled);
         if (!!doSpin) {
             submitIcon.removeClass('fa-' + defaultIcon);
             submitIcon.addClass('fa-' + spinnerIcon);
-            submitIcon.addClass('fa-spin');
+            submitIcon.addClass('fa-' + animation);
         } else {
             submitIcon.removeClass('fa-' + spinnerIcon);
-            submitIcon.removeClass('fa-spin');
+            submitIcon.removeClass('fa-' + animation);
             submitIcon.addClass('fa-' + defaultIcon);
         }
     };
