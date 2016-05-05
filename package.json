@@ -1,7 +1,7 @@
 {
   "name": "form-cues",
   "description": "Visual cues for forms using Bootstrap and Font Awesome",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/beardon/form-cues",
   "bugs": {
     "url": "https://github.com/beardon/form-cues/issues",

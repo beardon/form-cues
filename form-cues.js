@@ -45,9 +45,10 @@
      * Disables/enables buttons and animates their icons
      * @param submitButton {Object|String}
      * @param submitIcon {Object|String}
+     * @param submitText {Object|String}
      * @param options
      */
-    cues.setSubmitState = function (submitButton, submitIcon, options) {
+    cues.setSubmitState = function (submitButton, submitIcon, submitText, options) {
         options = options || {};
         var isEnabled = options.isEnabled || options.enabled || false;
         var doSpin = options.doSpin || options.spin || false;
@@ -57,8 +58,9 @@
         var buttonText = options.buttonText || options.text || null;
         submitButton = ((submitButton instanceof Object) ? submitButton : $('#' + submitButton));
         submitIcon = ((submitIcon instanceof Object) ? submitIcon : $('#' + submitIcon));
+        submitText = ((submitText instanceof Object) ? submitText : $('#' + submitText));
         if (!!buttonText) {
-            submitButton.prop('value', buttonText);
+            submitText.html(buttonText);
         }
         submitButton.prop('disabled', !isEnabled);
         if (!!doSpin) {
