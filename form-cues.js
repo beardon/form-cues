@@ -54,8 +54,12 @@
         var defaultIcon = options.defaultIcon || options.icon || 'check';
         var spinnerIcon = options.spinnerIcon || 'spinner';
         var animation = options.animation || 'spin';
+        var buttonText = options.buttonText || options.text || null;
         submitButton = ((submitButton instanceof Object) ? submitButton : $('#' + submitButton));
         submitIcon = ((submitIcon instanceof Object) ? submitIcon : $('#' + submitIcon));
+        if (!!buttonText) {
+            submitButton.prop('value', buttonText);
+        }
         submitButton.prop('disabled', !isEnabled);
         if (!!doSpin) {
             submitIcon.removeClass('fa-' + defaultIcon);
